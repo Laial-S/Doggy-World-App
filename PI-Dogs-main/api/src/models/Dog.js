@@ -7,6 +7,21 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
+    height: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    weight: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
   });
 };
