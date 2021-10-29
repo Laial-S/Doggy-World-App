@@ -52,27 +52,25 @@ module.exports = server
 
     server.get('/:id', async (req, res, next) => {
         const {id} = req.params;
-        // console.log(id)
+        console.log(parseInt(id))
         try {
             const getDetail = await axios.get(`https://api.thedogapi.com/v1/breeds`)
             const data = getDetail.data
             // console.log(data)
-            const dogFiltered = data.find((d) => { d.id === id
-                // return {
-                //     image: d.image,
-                //     name: d.name,
-                //     temperament: d.temperament,
-                //     height: d.height,
-                //     weight: d.weight,
-                //     life_span: d.life_span
-                // }
-            })
-            console.log(dogFiltered)
-            // res.status(200).json(dogFiltered)
-           
-        } catch(e) {
-            console.log(e)
-        }
+            const dogFiltered = data.find(dog => {return dog.id === parseInt(id)});
+            // console.log(dogFiltered)
+            const showDog = {
+                image: dogFiltered.image.url,
+                name: dogFiltered.name,
+                temperament: dogFiltered.temperament,
+                height: dogFiltered.height,
+                weight: dogFiltered.weight.metric,
+                life_span: dogFiltered.life_span  
+            }
+            // console.log(showDog)
+            res.status(200).json(showDog)
+        } catch(e) {next(e)}
     })
 
+    
 
