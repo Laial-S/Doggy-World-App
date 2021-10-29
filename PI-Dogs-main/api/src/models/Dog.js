@@ -15,13 +15,30 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
-    height: {
+    height_min: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      
     },
-    weight: {
+    height_max: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      
+    },
+    weight_min: {
+      type: DataTypes.INTEGER,
+      
+    },
+    weight_max: {
+      type: DataTypes.INTEGER,
+      
+    },
+    life_span: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    image: {
+      type: DataTypes.STRING
     }
-  });
+  },
+   {timestap: true}
+  );
 };
