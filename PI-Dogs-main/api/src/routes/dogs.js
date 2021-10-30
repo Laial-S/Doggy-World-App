@@ -44,7 +44,16 @@ server.use(express.json())
                         life_span: dog.life_span,
                     }
                 })
-                res.status(200).json(dogsFiltered)   
+                // trae los perros de la base de datos
+                const dogsDataBase = await Dog.findAll({
+                    attributes: ({
+                        exclude: ["createdAt", "updatedAt"]
+                    })
+                })
+                //concatena los perros de la api con los de la db
+                const allDogs = dogsFiltered.concat(dogsDataBase)
+
+                res.status(200).json(allDogs)   
                  //traigo solo una raza 
             } else {
                 const raza = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
