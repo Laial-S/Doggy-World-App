@@ -1,0 +1,31 @@
+ .cardBody {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    background-color: plum;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin: 5px;
+  }
+
+.contenedor {
+    position: relative;
+    width: 40vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 5px;
+}
+
+img {
+    width: auto;
+    height: auto;
+    min-width: 250px;
+    max-height: 250px;
+    border-radius: 10px;
+    flex: auto;
+}

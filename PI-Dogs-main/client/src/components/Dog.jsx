@@ -1,20 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './Dog.css'
 
-export default function Dog({id, image, name, temperament, weight}) {
+export default function Dog({dogs}) {
+    console.log(dogs)
     return (
-        <div> 
-      <Link to= {`/dog/${id}`}>  
-        <div className='cardDog'>
-            <h3 className='name'>{name}</h3>            
+        <div className='cardBody'> 
+      <Link to= {'/home'}>  
+        <div>
+            <h3>{dogs.name}</h3>            
         </div> 
-        <div className='cardBody'>
-            <div className='img'>{image}</div>
-            <div className='info'>
-                <span>Temperament: {temperament}</span>
+        <div className='contenedor'>
+            <img src={dogs.image} alt='no encontro imagen'/>
+            <div>
+                <span>Temperament: {dogs.temperament}</span>
             </div>
-            <div className='info'>
-                <span>Weight: {weight}</span>
+            <div>
+                <span>Weight MAX: {dogs.weight_max}</span>
+                <span>Weight MIN: {dogs.weight_min}</span>
             </div>
         </div>   
        </Link> 

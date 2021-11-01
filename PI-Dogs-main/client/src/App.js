@@ -13,10 +13,8 @@ function App() {
         <LandingPage/>
       </Route>
       <Route exact path='/home'>
-        <Dogs/>
         <Home/>
       </Route>
-      
     </div>
   );
 }
