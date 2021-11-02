@@ -1,7 +1,6 @@
 
-
 import { Route } from "react-router";
-import Dog from "../Dog";
+
 import Searchbar from "../searchBar/SearchBar";
 import Dogs from "../Dogs";
 

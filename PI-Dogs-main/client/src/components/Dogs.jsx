@@ -1,52 +1,29 @@
-import axios from "axios";
+
 import Dog from "./Dog";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch, connect} from "react-redux";
 import './Dogs.css'
+import { getDogs } from "../actions/actions";
 
 
-export default function Dogs() {
-    
-    // const dogRequest = async () => {
-    //     try {
-    //         const perros = await axios.get('http://localhost:3001/dogs')
-    //         const dataDogs = perros.data
-    //         console.log(dataDogs)
-    //     } catch(e) {console.log('SOY ESTE ERROR GIGANTE ' + e)};
-    // }
-    // dogRequest();
-    
-    // // console.log(dogs)
-    const [dogs, setDogs] = useState([])
 
-    useEffect(async () => {
-        axios.get('http://localhost:3001/dogs')
-        .then(dogs => {
-            setDogs(dogs.data)
-        })
-        console.log(dogs)
-         
-    }, [])
-
+export default function Dogs() {            
+            const dispatch = useDispatch();
+            
+            const allDogs = useSelector((state) => state.dogs)
+                useEffect(() => {
+                    dispatch(getDogs())
+                }, [dispatch])
     return (
         <div className= 'dogs'>
             {
-                dogs?.map((d) => 
-                    <Dog dogs={{...d}}/>
-                        // <div>
-                        //     <h1>
-                        //         {d.name}
-                        //     </h1>
-                        //     <h2>
-                        //         {d.temperament}
-                        //     </h2>
-                        //     <p>
-                        //         {d.weight}
-                        //     </p>
-                        //     <img src={d.image} alt='img no encontrada'/>
-                        // </div>
+                allDogs?.map((d) => 
+                <Dog dogs={{...d}}/>
                 )
             }
-            
         </div>
     )
 }
+
+
+

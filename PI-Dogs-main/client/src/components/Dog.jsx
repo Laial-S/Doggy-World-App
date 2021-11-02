@@ -11,7 +11,7 @@ export default function Dog({dogs}) {
             <h3>{dogs.name}</h3>            
         </div> 
         <div className='contenedor'>
-            <img src={dogs.image} alt='no encontro imagen'/>
+            <img className='perritos' src={dogs.image} alt='no encontro imagen'/>
             <div>
                 <span>Temperament: {dogs.temperament}</span>
             </div>
