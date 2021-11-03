@@ -7,17 +7,19 @@ import { getDogs } from "../actions/actions";
 
 
 
-export default function Dogs() {            
-            const dispatch = useDispatch();
+export default function Dogs({currentDogs}) {            
+    const dispatch = useDispatch();
             
-            const allDogs = useSelector((state) => state.dogs)
-                useEffect(() => {
-                    dispatch(getDogs())
-                }, [dispatch])
+    const allDogs = useSelector((state) => state.dogs)
+        useEffect(() => {
+            dispatch(getDogs())
+        },  [dispatch])
+
+       
     return (
         <div className= 'dogs'>
             {
-                allDogs?.map((d) => 
+                currentDogs?.map((d) => 
                 <Dog dogs={{...d}}/>
                 )
             }

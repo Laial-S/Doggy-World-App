@@ -1,25 +1,36 @@
-import axios from "axios";
-import React from "react";
-import { useState } from "react";
 
- function Searchbar({onSearch}) {
-    const [breed, setBreed] = useState([]);
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch} from "react-redux";
+import { searchBreed } from "../../actions/actions";
+
+ function Searchbar() {
+    // const [breed, setBreed] = useState([]);
     const [input, setInput] = useState('')
 
-    async function onSearch(breed) {
-        await axios.get(`http://localhost:3001/dogs?name=${breed}`)
-        .then(breed => {
-            setBreed(breed.data)
-        })
-        console.log(breed.data)
-    }
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(searchBreed())
+    }, [dispatch])
+            
+    const allBreeds = useSelector((state) => state.breed)
+        useEffect(() => {
+            dispatch(searchBreed())
+        }, [dispatch])
 
     function onInputChange(e) {
+        e.preventDefault();
         setInput(e.target.value)
-        console.log(e.target.value)
-        // e.preventDefault();
+        handleSubmit(e.target.value)
     }
 
+    function handleSubmit(name) {
+        let resultadoBusqueda = allBreeds.filter((dogs) => {
+            if(dogs.name.toLowerCase().includes(name.toLowerCase())) {
+                return dogs 
+            }
+        })
+        // allBreeds(resultadoBusqueda)
+    }
     return (
         <div>
            <input
@@ -31,6 +42,7 @@ import { useState } from "react";
            <input
             type='submit'
             value='Search'
+            onSubmit={allBreeds }
            />
         </div> 
     );  

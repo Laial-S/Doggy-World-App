@@ -1,0 +1,19 @@
+.paginado {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    justify-content: center;
+}
+
+.number {
+    display: flex;
+    flex: content;
+    justify-content: space-around;
+    background-color: cornflowerblue;
+    border-radius: 60px;
+    margin: 0.35rem;
+    border: 0.15rem solid cornflowerblue;
+}

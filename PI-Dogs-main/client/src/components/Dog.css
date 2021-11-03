@@ -11,21 +11,25 @@
 
 .contenedor {
     position: relative;
-    width: 40vw;
+    width: 35vw;
     height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
-    margin: 5px;
+    
 }
 
 .perritos {
-    width: auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    justify-self: center;
+    width:auto;
     height: auto;
     min-width: 250px;
     max-height: 250px;
     border-radius: 10px;
-    flex: auto;
+   
 }
