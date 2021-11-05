@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const { Dog, Temperamento } = require('../db');
+const { Dog, Temperament} = require('../db');
 
 
 const server = express();
@@ -28,7 +28,7 @@ server.use(express.json())
                 let cleanList = Array.from(deleteRepited);
                 //PASO A GUARDAR EN LA BASE DE DATOS//
                 cleanList.map((temperament) => {
-                    Temperamento.findOrCreate({
+                    Temperament.findOrCreate({
                         where: {
                             name: temperament
                         }
@@ -43,7 +43,7 @@ server.use(express.json())
     server.get('/', async (req, res, next) => {
         try {
             await llamadoApi();
-            const data = await Temperamento.findAll()
+            const data = await Temperament.findAll()
             if(data.length) {
                 return res.json(
                     {   length: data.length,

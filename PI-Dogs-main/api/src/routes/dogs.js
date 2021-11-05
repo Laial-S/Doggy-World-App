@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const { Dog, Temperamento } = require('../db');
+const { Dog, Temperament } = require('../db');
 
 
 const server = express();
@@ -36,7 +36,11 @@ server.use(express.json())
                     return {
                         image: dog.image.url,
                         name: dog.name,
-                        temperament: dog.temperament,
+                        temperament: dog.temperament?.split(', ').map((t) => {
+                            return {
+                                name: t
+                            } 
+                        }),
                         weight_min: !weight_min || weight_min === null? !weight_max || weight_max === null? weight_min = 0 : weight_min = weight_max - 1 : weight_min,
                         weight_max: !weight_max || weight_max === null? !weight_min || weight_min === null? weight_max = 0 : weight_max = weight_min + 1 : weight_max,
                         height_min: !height_min || height_min === null? !height_max || height_max === null? height_min = 0 : height_min = height_max - 1 : height_min,
@@ -46,9 +50,13 @@ server.use(express.json())
                 })
                 // trae los perros de la base de datos
                 const dogsDataBase = await Dog.findAll({
-                    attributes: ({
-                        exclude: ["createdAt", "updatedAt"]
-                    })
+                    include: {
+                        model: Temperament,
+                        attributes: ['name'],
+                        through: {
+                            attributes: []
+                        }
+                    }
                 })
                 //concatena los perros de la api con los de la db
                 const allDogs = dogsFiltered.concat(dogsDataBase)

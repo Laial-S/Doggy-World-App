@@ -3,7 +3,7 @@
     display: -ms-flexbox;
     display: flex;
     padding-left: 0;
-    list-style: none;
+    list-style: disc;
     border-radius: 0.25rem;
     justify-content: center;
 }
@@ -17,3 +17,6 @@
     margin: 0.35rem;
     border: 0.15rem solid cornflowerblue;
 }
+
+
+

@@ -1,44 +1,48 @@
 import { Route } from "react-router";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Searchbar from "../searchBar/SearchBar";
-import Dogs from "../Dogs";
+import Dog from "../Dog";
 import Paginado from "../paginado/Paginado";
 import Filtros from "../filtrado/Filtros";
-import { getDogs } from "../../actions/actions";
+
+import { getDogs} from "../../actions/actions";
+
 
 function Home() {
-    const allDogs = useSelector((state) => state.dogs)
-        
-        const [currentPage, setCurrentPage] = useState(1);
-        const [dogsPerPage, setDogsPerPage] = useState(8);
-        
-        const indexLastDog = currentPage * dogsPerPage; // 8
-        const indexFirstDog = indexLastDog - dogsPerPage; //0  
-        
-        const currentDogs = allDogs.slice(indexFirstDog, indexLastDog)//dogs en la pag actual
+    const dispatch = useDispatch();
 
-        const paginado = (pageNumber) => {
-            setCurrentPage(pageNumber)
-        }
-
-    const handleClick = (e) => {
-        e.preventDeafult();
-        dispatchEvent(getDogs())
-    }
+    const dogs = useSelector((state) => state.dogs)
+    // console.log(dogs)
     
+    const [currentPage, setCurrentPage] = useState(1);
+    const [dogsPerPage, setDogsPerPage] = useState(8);
+    
+    const indexLastDog = currentPage * dogsPerPage; // 8
+    const indexFirstDog = indexLastDog - dogsPerPage; //0  
+    
+    const currentDogs = dogs?.slice(indexFirstDog, indexLastDog)//dogs en la pag actual
+
+    const paginado = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
+
+    useEffect(() => {
+        dispatch(getDogs())
+    },  [dispatch])
+    
+    const handleClick = (e) => {
+        e.preventDefault();
+        dispatch(getDogs())
+    }
+
     return (
         <div>
-            <Route path='/dog'>
-                <Link to= '/dog'>
-                    <button>
-                        crear personaje
-                    </button>
-                </Link>
-            </Route>
             <h1>WELCOME TO DOGGY WORLD!♥</h1>
+            <button>
+                crear personaje
+            </button>
             <button onClick={e => {handleClick(e)}}>
                 Recargar doggos
             </button>
@@ -48,10 +52,23 @@ function Home() {
                 <Filtros/>      
                 <Paginado
                 dogsPerPage={dogsPerPage}
-                allDogs={allDogs.length}
+                dogs={dogs?.length}
                 paginado={paginado}
                 />
-               <Dogs currentDogs={currentDogs}/>
+                {
+                    currentDogs?.map((d) => {
+                        return (
+                            <Dog
+                            name={d.name}
+                            temperament={d.temperament?.map((t) => t.name).join(', ')}
+                            weight_max={d.weight_max}
+                            weight_min={d.weight_min}
+                            image={d.image}
+                            key = {d.id}
+                            />
+                        )
+                    })
+                } 
             </Route>
         </div>
     )
