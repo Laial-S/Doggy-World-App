@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Searchbar from "../searchBar/SearchBar";
 import Dog from "../Dog";
+import PostDog from "../dogCreation/PostDog";
 import Paginado from "../paginado/Paginado";
 import Filtros from "../filtrado/Filtros";
+
 
 import { getDogs} from "../../actions/actions";
 
@@ -42,11 +44,15 @@ function Home() {
     return (
         <div>
             <h1>WELCOME TO DOGGY WORLD!♥</h1>
-            <button>
-                crear personaje
-            </button>
+            <Link to='/createDog'>
+                <button>
+                    CREATE YOUR DOG
+                </button>
+                
+            </Link>
+            
             <button onClick={e => {handleClick(e)}}>
-                Recargar doggos
+                RELOAD DOGGOS
             </button>
 
             <Route path='/home'>

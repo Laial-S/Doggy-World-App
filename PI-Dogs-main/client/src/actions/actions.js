@@ -74,3 +74,18 @@ export function orderByWeight(payload) {
         payload
     }
 }
+
+export function createDog({name, image, temperament, weight_min, weight_max, height_min, height_max, life_span}) {
+    return async function() {
+        axios.post('http://localhost:3001/dog', {
+            name: name,
+            temperament: temperament,
+            height_min: height_min,
+            height_max: height_max,
+            weight_min: weight_min,
+            weight_max: weight_max,
+            image: image,
+            life_span: life_span
+        })
+    }
+}

@@ -8,7 +8,6 @@ export default function Filtros({setOrden}) {
 
     const allTemp = useSelector((state) => state.temperament)
 
-    // const [orden, setOrden] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
     
     const handleFilterTemperament = (e) => {
