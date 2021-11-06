@@ -1,28 +1,47 @@
-import React, { useEffect } from "react";
-import { filterByTemperament, filterCreatedOrApi, getTemperaments} from "../../actions/actions";
+import React, { useEffect, useState } from "react";
+import { filterByTemperament, filterCreatedOrApi, getTemperaments, orderByAZ, orderByWeight} from "../../actions/actions";
 
 import { useSelector, useDispatch } from "react-redux";
 
-export default function Filtros() {
+export default function Filtros({setOrden}) {
     const dispatch = useDispatch()
 
     const allTemp = useSelector((state) => state.temperament)
-    // console.log(allTemp)
+
+    // const [orden, setOrden] = useState('')
+    const [currentPage, setCurrentPage] = useState(1)
     
     const handleFilterTemperament = (e) => {
         e.preventDefault();
         dispatch(filterByTemperament(e.target.value))
+        setCurrentPage(1)
+    }
+
+    const handleCreatedOrApi = (e) => {
+        e.preventDefault();
+        dispatch(filterCreatedOrApi(e.target.value))
+        setCurrentPage(1)
+    }
+
+    const handleSort = (e) => {
+        dispatch(orderByAZ(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
+    }
+    const handleSortWeight = (e) => {
+        dispatch(orderByWeight(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
     }
 
     useEffect(() => {
         dispatch(getTemperaments())
-    },  [dispatch])    
-
+    },  [])    
     return (
         <div>
             <div> 
                 <span>FILTER BY </span>
-                <select onChange={handleFilterTemperament}>
+                <select onChange={(e) => handleFilterTemperament(e)}>
                     <option value="All">ALL TEMPERAMENTS</option>
                     {
                         allTemp.length&&allTemp.map((t) => (
@@ -30,8 +49,8 @@ export default function Filtros() {
                         ))
                     }
                 </select>
-                <select>
-                    <option value="all">ALL</option>
+                <select onChange={(e) => handleCreatedOrApi(e)}>
+                    <option value="All">ALL</option>
                     <option value="created">CREATED</option>
                     <option value="api">EXISTENT</option>
                 </select>
@@ -39,10 +58,13 @@ export default function Filtros() {
                 
             <div>
                 <span>ORDER BY </span>
-                <select>
+                <select onChange={(e) => handleSort(e)}>
                     <option value="az">A - Z</option>
                     <option value="za">Z - A</option>
-                    <option value="weight">Weight</option>
+                </select>
+                <select onChange={(e) => handleSortWeight(e)}>    
+                    <option value="weightASC">Weight ASC </option>
+                    <option value="weightDSC">Weight DSC </option>
                 </select>
             </div>    
                

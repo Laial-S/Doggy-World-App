@@ -2,9 +2,12 @@ import axios from "axios"
 
 export const GET_DOGS= 'GET_DOGS';
 export const SEARCH_BREED= 'SEARCH_BREED';
+export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT';
+export const GET_DOGS_DB = 'GET_DOGS_DB';
 export const FILTER_CREATED_OR_API = 'FILTER_CREATED_OR_API';
-export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS'
+export const ORDER_NAME = 'ORDER_NAME';
+export const ORDER_WEIGHT = 'ORDER_WEIGHT';
 
 export function getDogs() {
     // console.log('entro a la funcion')
@@ -35,17 +38,39 @@ export function getTemperaments() {
 }
 
 export function filterByTemperament(payload) { // es el value que llega por el option del select
-    console.log(payload)
+    // console.log(payload)
     return {
         type: 'FILTER_BY_TEMPERAMENT',
         payload,
     }
 }
 
+export function getDogsDB() {
+    return async function(dispatch) {
+        const allDoggies = await axios.get('http://localhost:3001/dogs')
+        const data = allDoggies.data
+        const dogsDB = data.filter((e) => typeof(e.id) !== 'number')
+        console.log(dogsDB)
+        return dispatch({type: 'GET_DOGS_DB', payload: dogsDB})
+    }
+}
 export function filterCreatedOrApi(payload) {
-
     return {
         type: 'FILTER_CREATED_OR_API',
         payload
     } 
+}
+
+export function orderByAZ(payload) {
+    return {
+        type: 'ORDER_NAME',
+        payload
+    }
+}
+
+export function orderByWeight(payload) {
+    return {
+        type: 'ORDER_WEIGHT',
+        payload
+    }
 }

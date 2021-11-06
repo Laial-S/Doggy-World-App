@@ -4,6 +4,7 @@ import React from "react";
 import './Dog.css'
 
 export default function Dog({name, temperament, weight_max, weight_min, image}) {
+    
     // console.log(dogs)
     return (
         <div className='cardBody'> 

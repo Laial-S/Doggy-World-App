@@ -19,6 +19,8 @@ function Home() {
     const [currentPage, setCurrentPage] = useState(1);
     const [dogsPerPage, setDogsPerPage] = useState(8);
     
+    const [orden, setOrden ] = useState('');
+
     const indexLastDog = currentPage * dogsPerPage; // 8
     const indexFirstDog = indexLastDog - dogsPerPage; //0  
     
@@ -30,13 +32,13 @@ function Home() {
 
     useEffect(() => {
         dispatch(getDogs())
-    },  [dispatch])
+    },  [])
     
     const handleClick = (e) => {
         e.preventDefault();
         dispatch(getDogs())
+        setCurrentPage(1)
     }
-
     return (
         <div>
             <h1>WELCOME TO DOGGY WORLD!♥</h1>
@@ -49,7 +51,7 @@ function Home() {
 
             <Route path='/home'>
                 <Searchbar/>
-                <Filtros/>      
+                <Filtros setOrden={setOrden}/>      
                 <Paginado
                 dogsPerPage={dogsPerPage}
                 dogs={dogs?.length}
