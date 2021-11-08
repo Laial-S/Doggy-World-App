@@ -1,18 +1,20 @@
 import { GET_DOGS,
-     SEARCH_BREED,
+    //  SEARCH_BREED,
      FILTER_BY_TEMPERAMENT,
      GET_DOGS_DB,
      FILTER_CREATED_OR_API,
      GET_TEMPERAMENTS,
      ORDER_NAME,
-     ORDER_WEIGHT} from "../actions/actions"
+     ORDER_WEIGHT,
+     DOG_DETAIL} from "../actions/actions"
 
 
 const initialState = {
     dogs : [],
     allDogs : [],
     temperament : [],
-    DBdogs : []
+    DBdogs : [],
+    dogDetail : []
 }
 
 
@@ -25,11 +27,11 @@ const reducer = (state = initialState, action) => {
                 dogs: action.payload,
                 allDogs: action.payload
             };
-        case SEARCH_BREED:
-            return {
-                ...state,
-                breed: action.payload
-            };
+        // case SEARCH_BREED:
+        //     return {
+        //         ...state,
+        //         breed: action.payload
+        //     };
         case GET_TEMPERAMENTS: 
             return {
                 ...state,
@@ -104,6 +106,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 dogs: weightArr
+            }
+        case DOG_DETAIL: 
+            return {
+                ...state,
+                dogDetail : action.payload
             }
         default :
             return state

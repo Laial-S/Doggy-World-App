@@ -88,7 +88,7 @@ server.use(express.json())
                 image: dogFiltered.image.url,
                 name: dogFiltered.name,
                 temperament: dogFiltered.temperament,
-                height: dogFiltered.height,
+                height: dogFiltered.height.metric,
                 weight: dogFiltered.weight.metric,
                 life_span: dogFiltered.life_span,
             }

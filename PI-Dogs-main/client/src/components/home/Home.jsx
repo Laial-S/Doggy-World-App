@@ -1,6 +1,6 @@
+import React, { useState, useEffect } from "react";
 import { Route } from "react-router";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Searchbar from "../searchBar/SearchBar";
 import Dog from "../Dog";
