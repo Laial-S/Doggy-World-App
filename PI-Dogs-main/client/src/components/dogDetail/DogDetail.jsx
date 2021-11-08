@@ -1,18 +1,18 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 import { dogDetail } from "../../actions/actions";
 import Dog from "../Dog";
-
-
 
 export default function DogDetail() {
     const dispatch = useDispatch();
     const dog = useSelector((state) => state.dogDetail)
     // console.log(dog)
+    const {id} = useParams()
     useEffect(() => {
-        dispatch(dogDetail())
+        dispatch(dogDetail(id))
     },  [])
-
+    
     const {name, temperament, height, weight, life_span, image} =  dog;
 
     return (

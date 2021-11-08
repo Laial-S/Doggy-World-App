@@ -73,8 +73,9 @@ function Home() {
                             weight_min={d.weight_min}
                             image={d.image}
                             key = {d.id}
+                            id = {d.id}
                             />
-                        )
+                            )
                     })
                 } 
             </Route>

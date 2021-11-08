@@ -91,9 +91,9 @@ export function createDog({name, image, temperament, weight_min, weight_max, hei
     }
 }
 
-export function dogDetail() {
+export function dogDetail(id) {
     return async function(dispatch) {
-        const doggo = await axios.get('http://localhost:3001/dogs/:id')
+        const doggo = await axios.get(`http://localhost:3001/dogs/${id}`)
         const data = doggo.data
         console.log(data)
         return dispatch({type: 'DOG_DETAIL', payload: data})

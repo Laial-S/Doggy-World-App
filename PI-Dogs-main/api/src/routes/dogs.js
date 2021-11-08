@@ -46,6 +46,7 @@ server.use(express.json())
                         height_min: !height_min || height_min === null? !height_max || height_max === null? height_min = 0 : height_min = height_max - 1 : height_min,
                         height_max: !height_max || height_max === null? !height_min || height_min === null? height_max = 0 : height_max = height_min + 1 : height_max,
                         life_span: dog.life_span,
+                        id: dog.id,
                     }
                 })
                 // trae los perros de la base de datos
