@@ -5,9 +5,7 @@ const { Dog, Temperament} = require('../db');
 
 const server = express();
 server.use(express.json())
-
-
-   
+  
 //primero hago el llamado a la api y guardo la data en la base de datos SIN REQUEST
     async function llamadoApi() {
         const lista = [];

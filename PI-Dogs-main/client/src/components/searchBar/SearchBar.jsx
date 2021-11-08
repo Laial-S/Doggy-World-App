@@ -1,36 +1,20 @@
-
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch} from "react-redux";
-// import { searchBreed } from "../../actions/actions";
+import { searchBreed } from "../../actions/actions";
 
  function Searchbar() {
     // const [breed, setBreed] = useState([]);
     const [input, setInput] = useState('')
-
+    const allBreeds = useSelector((state) => state.dogs)
+    console.log(allBreeds)
     const dispatch = useDispatch();
-    useEffect(() => {
-        // dispatch(searchBreed())
-    }, [dispatch])
-            
-    const allBreeds = useSelector((state) => state.breed)
-        useEffect(() => {
-            // dispatch(searchBreed())
-        }, [dispatch])
 
     function onInputChange(e) {
         e.preventDefault();
         setInput(e.target.value)
-        handleSubmit(e.target.value)
+        dispatch(searchBreed(input))
     }
 
-    function handleSubmit(name) {
-        let resultadoBusqueda = allBreeds.filter((dogs) => {
-            if(dogs.name.toLowerCase().includes(name.toLowerCase())) {
-                return dogs 
-            }
-        })
-        // allBreeds(resultadoBusqueda)
-    }
     return (
         <div>
            <input
@@ -42,7 +26,7 @@ import { useSelector, useDispatch} from "react-redux";
            <input
             type='submit'
             value='Search'
-            onSubmit={allBreeds }
+            // onSubmit={handleSubmit}
            />
         </div> 
     );  

@@ -68,7 +68,7 @@ function Home() {
                         return (
                             <Dog
                             name={d.name}
-                            temperament={d.temperament?.map((t) => t.name).join(', ')}
+                            temperaments={d.temperaments?.map((t) => t.name).join(', ')}
                             weight_max={d.weight_max}
                             weight_min={d.weight_min}
                             image={d.image}

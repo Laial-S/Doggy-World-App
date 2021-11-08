@@ -1,14 +1,15 @@
 import axios from "axios"
 
 export const GET_DOGS= 'GET_DOGS';
-// export const SEARCH_BREED= 'SEARCH_BREED';
+export const SEARCH_BREED= 'SEARCH_BREED';
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT';
 export const GET_DOGS_DB = 'GET_DOGS_DB';
 export const FILTER_CREATED_OR_API = 'FILTER_CREATED_OR_API';
 export const ORDER_NAME = 'ORDER_NAME';
 export const ORDER_WEIGHT = 'ORDER_WEIGHT';
-export const DOG_DETAIL = 'DOG_DETAIL'
+export const DOG_DETAIL = 'DOG_DETAIL';
+export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 
 export function getDogs() {
     // console.log('entro a la funcion')
@@ -20,13 +21,14 @@ export function getDogs() {
     }
 }
 
-// export function searchBreed(breed) {
-//     return async function(dispatch) {
-//         const dogs = await axios.get(`http://localhost:3001/dogs?name=${dogs.name}`)
-//         const data = dogs.data;
-//         return dispatch({type: 'SEARCH_BREED', payload: data})
-//     }
-// }
+export function searchBreed(name) {
+    return async function(dispatch) {
+        const dogs = await axios.get(`http://localhost:3001/dogs?name=${name}`)
+        console.log('ENTRE ACCION' + dogs)
+        const data = dogs.data;
+        return dispatch({type: 'SEARCH_BREED', payload: data})
+    }
+}
 
 export function getTemperaments() {
     return async function(dispatch) {
@@ -92,10 +94,13 @@ export function createDog({name, image, temperament, weight_min, weight_max, hei
 }
 
 export function dogDetail(id) {
-    return async function(dispatch) {
+    if(id) {
+       return async function(dispatch) {
         const doggo = await axios.get(`http://localhost:3001/dogs/${id}`)
         const data = doggo.data
-        console.log(data)
         return dispatch({type: 'DOG_DETAIL', payload: data})
-    }
+        } 
+    } else {
+        return {type: 'CLEAR_DETAIL'}
+    } 
 }

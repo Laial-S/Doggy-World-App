@@ -1,12 +1,13 @@
 import { GET_DOGS,
-    //  SEARCH_BREED,
+     SEARCH_BREED,
      FILTER_BY_TEMPERAMENT,
      GET_DOGS_DB,
      FILTER_CREATED_OR_API,
      GET_TEMPERAMENTS,
      ORDER_NAME,
      ORDER_WEIGHT,
-     DOG_DETAIL} from "../actions/actions"
+     DOG_DETAIL,
+     CLEAR_DETAIL} from "../actions/actions"
 
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
     allDogs : [],
     temperament : [],
     DBdogs : [],
-    dogDetail : []
+    dogDetail  : [],
 }
 
 
@@ -27,11 +28,12 @@ const reducer = (state = initialState, action) => {
                 dogs: action.payload,
                 allDogs: action.payload
             };
-        // case SEARCH_BREED:
-        //     return {
-        //         ...state,
-        //         breed: action.payload
-        //     };
+        case SEARCH_BREED:
+            console.log('entre reducer')
+            return {
+                ...state,
+                dogs: action.payload
+            };
         case GET_TEMPERAMENTS: 
             return {
                 ...state,
@@ -41,7 +43,7 @@ const reducer = (state = initialState, action) => {
             const allTemperaments = state.allDogs
             const temperamentsFiltered = action.payload === 'All'? //si el value es All 
             allTemperaments : //devuelvo todos los temperamentos, sino
-            allTemperaments.filter((d) => d.temperament&&d.temperament.find((t) => t.name === action.payload))//hago un forEach, preguntando si cada uno de los perrs
+            allTemperaments.filter((d) => d.temperaments&&d.temperaments.find((t) => t.name === action.payload))//hago un forEach, preguntando si cada uno de los perrs
             // tiene temperamento, si tiene que se fije en cada uno en la propiedad name si ese valor es igual al value del option del select
             return {
                 ...state,
@@ -111,6 +113,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 dogDetail : action.payload
+            }
+        case CLEAR_DETAIL:
+            return {
+                ...state,
+                dogDetail : []
             }
         default :
             return state
