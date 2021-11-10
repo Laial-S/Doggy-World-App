@@ -1,0 +1,24 @@
+
+.fondo {
+    height: 260vh;
+    background-color: khaki;
+}
+.fondoNav {
+    /* display: flex; */
+    background-color: rgb(47, 43, 65)  ;
+}
+.filtros {
+    display: flex;
+    position: relative;
+    top: 1rem;
+    left: 35rem;
+}
+.paginadoHome {
+   position: relative;
+}
+
+.cardDog{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

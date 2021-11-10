@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Route } from "react-router";
 import { getDogs, getTemperaments, createDog } from "../../actions/actions";
+import './PostDog.css'
 
 export default function PostDog() {
     const [input, setInput] = useState({
@@ -37,12 +38,12 @@ export default function PostDog() {
     // }
 
     return (
-        <div>
+        <div className='formCointeiner'>
             <Link to='/home'>
                 <button onClick={(e) => getDogs(e)}>HOME</button>
             </Link>
-            
-                <form onSubmit={(e) => handleSubmit(e)}>
+            <div className='bodyForm'>
+                <form className = 'formi' onSubmit={(e) => handleSubmit(e)}>
                     <div>
                         <label htmlFor="Name...">Name: </label>
                         <input
@@ -158,12 +159,12 @@ export default function PostDog() {
                         }}
                         />
                     </div>
-                    <div>
+                    <div className = 'temperametsForm'>
                         {temperament.map((t) => (
-                            <label>
-                                <div>
+                            <label >
+                                <div >
                                     {t + ':'}
-                                <input
+                                <input 
                                     type='checkbox'
                                     id={t.name}
                                     value={t.name}
@@ -181,6 +182,8 @@ export default function PostDog() {
                     </div>
                     <input type="submit" value='ADD DOG'/>
                 </form>
+            </div>
+                
         </div>
           
     )

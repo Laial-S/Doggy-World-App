@@ -1,0 +1,32 @@
+.formCointeiner {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+}
+
+.formi {
+    display: flex;
+    height: 100vh;
+    
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding:10px ;
+    background-color: burlywood;
+}
+.bodyForm {
+    max-width: 700px;
+    width: 100%;
+    background-color: rgb(42, 92, 94);
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+.temperamentsForm {
+    /* position: relative; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}

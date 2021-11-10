@@ -1,40 +1,33 @@
- .cardBody {
-  display: flex;
-  background-color: plum;
-  border-radius: 1.5rem;
-  flex-direction: row;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  margin: 1rem;
-  padding: 1rem;
-  width: 30vw;
-  height: 30hw;
-}
-
-.title {
-    position: relative;
-    width: fit-content;
-    height: fit-content;
+.contenedor {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-}
-
-.perritos {
-    display: flex;
-    align-content: center;
+    width: 400px;
+    height: 513px;
     justify-content: center;
-    justify-self: center;
-    width:auto;
-    height: auto;
-    min-width: 250px;
-    max-height: 250px;
-    border-radius: 10px;
+    background-color:rgb(192, 192, 233);
+    border-radius: 3rem;
+    margin: 0.5rem;
+    
+}
+.title {
+   display: flex;
+   position: relative;
+   justify-content: center;
 }
 
-.DOGS {
+.imgPerro {
     display: flex;
-    flex-direction: column;
+    position: relative;
+    justify-content: center;
     align-items: center;
-   
+    height: auto;
+    width: auto;
+    max-width: 350px;
+    max-height: 350px;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+.link {
+    text-decoration: none;
 }

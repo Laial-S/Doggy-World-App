@@ -1,0 +1,25 @@
+.filtross {
+    display: flex;
+    position: relative;
+    top: 1rem;
+    left: -20rem;
+    color: black;
+    font-size: 1.3rem;
+}
+.filtross2 {
+    display: flex;
+    position: relative;
+    top: -1.7rem;
+    right: -20rem;
+    color: black;
+    font-size: 1.3rem;
+}
+
+.option {
+    border-radius: 1rem;
+    background-color: rgb(243, 234, 220);
+    color: black;
+    font-size: 1rem;
+    margin: 0.3rem;
+    padding: 0.3rem;
+}

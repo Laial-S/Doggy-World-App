@@ -1,0 +1,45 @@
+.imgLanding {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+}
+
+.text {
+    position: fixed;
+    top: 12rem;
+    right: 60rem;
+    color:#e9d83e;
+    font-size: 5rem;
+    font-family: Roboto, sans-serif;
+}
+.imagen {
+    right: 15rem;
+    position:fixed;
+}
+/* fdd700 */
+
+.boton {
+    border-radius: 1rem;
+    border: 0;
+    background-color: rgb(236, 181, 27);
+    font-size:1.7rem;
+    width: 7rem;
+    height: 3rem;
+    font-family:  Roboto, sans-serif;
+    
+}
+
+.contenedorBoton {
+    display: flex;
+    /* align-content: center;
+    justify-content: center;
+    flex-wrap: wrap; */
+    position:fixed;
+    top:9rem;
+     /* bottom: 40rem; */
+    left:46rem;
+    /* right: 5px; */
+    width: fit-content;
+    height: fit-content;
+}

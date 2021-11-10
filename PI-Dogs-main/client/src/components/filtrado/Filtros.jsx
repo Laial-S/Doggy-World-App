@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { filterByTemperament, filterCreatedOrApi, getTemperaments, orderByAZ, orderByWeight} from "../../actions/actions";
-
+import '../filtrado/Filtros.css'
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Filtros({setOrden}) {
@@ -37,10 +37,10 @@ export default function Filtros({setOrden}) {
         dispatch(getTemperaments())
     },  [])    
     return (
-        <div>
-            <div> 
-                <span>FILTER BY </span>
-                <select onChange={(e) => handleFilterTemperament(e)}>
+        <div >
+            <div className='filtross'> 
+                <span>FILTER BY: </span>
+                <select className='option' onChange={(e) => handleFilterTemperament(e)}>
                     <option value="All">ALL TEMPERAMENTS</option>
                     {
                         allTemp.length&&allTemp.map((t) => (
@@ -48,20 +48,20 @@ export default function Filtros({setOrden}) {
                         ))
                     }
                 </select>
-                <select onChange={(e) => handleCreatedOrApi(e)}>
+                <select className='option' onChange={(e) => handleCreatedOrApi(e)}>
                     <option value="All">ALL</option>
                     <option value="created">CREATED</option>
                     <option value="api">EXISTENT</option>
                 </select>
             </div>
                 
-            <div>
+            <div className='filtross2'>
                 <span>ORDER BY </span>
-                <select onChange={(e) => handleSort(e)}>
+                <select className='option' onChange={(e) => handleSort(e)}>
                     <option value="az">A - Z</option>
                     <option value="za">Z - A</option>
                 </select>
-                <select onChange={(e) => handleSortWeight(e)}>    
+                <select  className='option' onChange={(e) => handleSortWeight(e)}>    
                     <option value="weightASC">Weight ASC </option>
                     <option value="weightDSC">Weight DSC </option>
                 </select>

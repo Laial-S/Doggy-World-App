@@ -1,0 +1,100 @@
+.fondoDetail {
+    /* width: 100vh; */
+    height: 110vh;
+    background-color: rgb(238, 182, 142);
+}
+.boton{
+    border-radius: 1.75rem;
+    background-color: rgb(243, 234, 220);
+    color: black;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+.containerDeetail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.name{
+    color: cornsilk;
+    font-family: Roboto, sans-serif;
+    font-size: 3rem;
+    position: relative;
+    top: -1rem;
+}
+p {
+    margin: 0.4rem;
+}
+.temperament {
+    color:rgb(151, 64, 6);
+    font:icon;
+    font-size: x-large;
+    background-color: rgb(243, 220, 231);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    width: fit-content;
+    position: relative;
+    left: 2rem;
+}
+.height {
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    width: 42vw;
+    color:rgb(151, 64, 6);
+    font:icon;
+    font-size: x-large;
+    background-color: rgb(243, 220, 231);
+    border-radius: 2rem;
+    position: relative;
+    left: 50vw;
+}
+.weight {
+    color:rgb(151, 64, 6);
+    font:icon;
+    font-size: x-large;
+    background-color: rgb(243, 220, 231);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 42vw;
+    position: relative;
+    left: 2rem;
+}
+.life_span {
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    width: 42vw;
+    color:rgb(151, 64, 6);
+    font:icon;
+    font-size: x-large;
+    background-color: rgb(243, 220, 231);
+    border-radius: 2rem;
+    position: relative;
+    left: 50vw;
+}
+
+.doggoIMG {
+    margin: .5rem;  
+    border-radius: 2rem;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    max-width: 450px;
+    max-height: 450px;   
+}
+
+.contenedorIMGD {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 400px;
+    height: 410px; */
+    justify-content: center;
+    border-radius: 3rem;
+    /* margin: 0.5rem; */
+}

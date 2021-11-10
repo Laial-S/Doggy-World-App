@@ -1,0 +1,32 @@
+.barra {
+    display: flex;
+    position: sticky;
+    width: 99vw;
+    justify-content: space-around;
+    background-color: rgb(84, 66, 99);
+}
+
+.titleNav {
+    color: rgb(243, 234, 220);
+    font-size: 3rem;
+    top: 1rem;
+    left: 1rem;
+}
+.searchi {
+    top: 1rem;
+    right: 1rem;  
+}
+.botonPadre {
+    top: 1rem;
+    left: 35rem; 
+}
+.botones{
+    border-radius: 1.75rem;
+    background-color: rgb(243, 234, 220);
+    color: black;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+.navLink {
+    text-decoration: none;
+}

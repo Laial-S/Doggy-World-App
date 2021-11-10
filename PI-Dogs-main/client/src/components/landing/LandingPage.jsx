@@ -1,17 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../landing/LandingPage.css'
+import doggin from '../landing/doggin.jpg'
 
  function landing() {
     return (
         <div>
-            <Link to='/'>
-                <img src="https://fondosmil.com/fondo/20100.jpg" alt="img not found" />
-            </Link>
-            <Link to= '/home'> 
-                <button>HOME</button>
-            </Link>
-           
+            <div className='imgLanding' >
+                <img 
+                    src={doggin}
+                    alt="img not found" 
+                    className='imagen'
+                />
+            <h1 className='text'>WELCOME TO DOGGY WORLD! ♥</h1>
+
+            </div>
+                    <div className='contenedorBoton'>
+                <Link to= '/home'> 
+                        <button className='boton'>HOME</button>
+                </Link>
+                    </div>
         </div>
     );
 };

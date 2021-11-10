@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { dogDetail } from "../../actions/actions";
 import { Link, useHistory } from "react-router-dom";
 import Dog from "../Dog";
+import './DogDetail.css'
 
 export default function DogDetail() {
     const dispatch = useDispatch();
@@ -24,17 +25,22 @@ export default function DogDetail() {
     const {name, temperament, height, weight, life_span, image} =  dog;
 
     return (
-        <div>
+        <div className='fondoDetail'>
             
-                <button onClick={deleteDetail}>HOME</button>
+            <button className= 'boton' onClick={deleteDetail}>HOME</button>
             
-            <div>
-                    <p>NAME: {name}</p>
-                    <p>TEMPERAMENT: {temperament}</p>
-                    <p>height: {height}</p>
-                    <p>weight: {weight}</p>
-                    <p>life span: {life_span}</p>
-                    <img src={image}/>
+            <div className='containerDetail'>
+                    <div className='name'> <p>{name}</p> </div>
+
+                    <div className='temperament'><p>TEMPERAMENT: {temperament}</p></div>
+                    
+                    <div className='height'><p>HEIGHT: {height}</p></div>
+                    
+                    <div className='weight'><p>WEIGHT: {weight}</p></div>
+                    
+                    <div className='life_span'><p>LIFE SPAN: {life_span}</p></div>
+                    
+                    <div className='contenedorIMGD'><img className='doggoIMG' src={image}/></div>
             </div>
         </div>
 

@@ -1,21 +1,21 @@
 .paginado {
-    display: -webkit-box;
-    display: -ms-flexbox;
+    /* display: -webkit-box; */
+    /* display: -ms-flexbox; */
     display: flex;
-    padding-left: 0;
-    list-style: disc;
+    padding: 2rem;
+    list-style:disc;
     border-radius: 0.25rem;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .number {
     display: flex;
     flex: content;
     justify-content: space-around;
-    background-color: cornflowerblue;
+    background-color: rgb(133, 89, 202);
     border-radius: 60px;
     margin: 0.35rem;
-    border: 0.15rem solid cornflowerblue;
+    border: 0.15rem solid rgb(104, 74, 156);
 }
 
 

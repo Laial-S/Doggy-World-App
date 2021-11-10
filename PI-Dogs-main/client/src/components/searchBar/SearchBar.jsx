@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch} from "react-redux";
 import { searchBreed } from "../../actions/actions";
+import '../searchBar/SearchBar.css'
 
  function Searchbar() {
     // const [breed, setBreed] = useState([]);
@@ -18,12 +19,14 @@ import { searchBreed } from "../../actions/actions";
     return (
         <div>
            <input
+            className='input'
             type='text'
             placeholder='Write breed'
             value={input}
             onChange={onInputChange}
            />
            <input
+            className='botonSB'
             type='submit'
             value='Search'
             // onSubmit={handleSubmit}

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Searchbar from "../searchBar/SearchBar";
+import NavBar from "../navBar/NavBar";
 import Dog from "../Dog";
-import PostDog from "../dogCreation/PostDog";
 import Paginado from "../paginado/Paginado";
 import Filtros from "../filtrado/Filtros";
+import '../home/Home.css'
 
 
 import { getDogs} from "../../actions/actions";
@@ -36,51 +36,46 @@ function Home() {
         dispatch(getDogs())
     },  [])
     
-    const handleClick = (e) => {
-        e.preventDefault();
-        dispatch(getDogs())
-        setCurrentPage(1)
-    }
+   
     return (
-        <div>
-            <h1>WELCOME TO DOGGY WORLD!♥</h1>
-            <Link to='/createDog'>
-                <button>
-                    CREATE YOUR DOG
-                </button>
-                
-            </Link>
-            
-            <button onClick={e => {handleClick(e)}}>
-                RELOAD DOGGOS
-            </button>
-
-            <Route path='/home'>
-                <Searchbar/>
-                <Filtros setOrden={setOrden}/>      
-                <Paginado
-                dogsPerPage={dogsPerPage}
-                dogs={dogs?.length}
-                paginado={paginado}
-                />
-                {
+        <div className='fondo'>
+                <div className='fondoNav'>
+                    <NavBar setCurrentPage={setCurrentPage}/>
+                </div>
+                <div className='filtros'>
+                    <Filtros setOrden={setOrden}/>      
+                </div>
+                <div className='paginadoHome'>
+                    <Paginado
+                    dogsPerPage={dogsPerPage}
+                    dogs={dogs?.length}
+                    paginado={paginado}
+                    />  
+                </div>
+                <div className='cardDog'>
+                   {
                     currentDogs?.map((d) => {
                         return (
-                            <Dog
-                            name={d.name}
-                            temperaments={d.temperaments?.map((t) => t.name).join(', ')}
-                            weight_max={d.weight_max}
-                            weight_min={d.weight_min}
-                            image={d.image}
-                            key = {d.id}
-                            id = {d.id}
-                            />
-                            )
+                            
+                               <Dog
+                                    name={d.name}
+                                    temperaments={d.temperaments?.map((t) => t.name).join(', ')}
+                                    weight_max={d.weight_max}
+                                    weight_min={d.weight_min}
+                                    image={d.image}
+                                    key = {d.id}
+                                    id = {d.id}
+                                /> 
+                            
+                        )
                     })
-                } 
-            </Route>
+                }  
+                </div>
         </div>
     )
 }
+                
+                    
+            
 
 export default Home;
