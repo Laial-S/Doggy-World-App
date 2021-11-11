@@ -13,11 +13,12 @@ export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 
 export function getDogs() {
     // console.log('entro a la funcion')
-    return async function(dispatch) {
-        const dogs = await axios.get('http://localhost:3001/dogs')
-        const data = dogs.data
-        
-        return dispatch({type: 'GET_DOGS', payload: data})
+    return function(dispatch) {
+        axios.get('http://localhost:3001/dogs')
+        .then((dogs) => {
+             return dispatch({type: 'GET_DOGS', payload: dogs.data})
+        })
+        .catch((e) => {console.log(e)})
     }
 }
 
