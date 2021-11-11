@@ -16,21 +16,34 @@ export default function PostDog() {
         weight_max : '',
         life_span : '',
     })
+    const [errors, setErrors] = useState({})
 
     const dispatch = useDispatch();
-    
     const temperament = useSelector((state) => state.temperament)
     useEffect(() => {
         dispatch(getTemperaments())
     },  [])
 
+    function handleInput(e) {
+        e.preventDefault();
+        setInput({
+          ...input,
+          [e.target.name]: e.target.value,
+        })
+        setErrors(
+          validate({
+          ...input,
+          [e.target.name]: e.target.value,
+          })
+        );
+        
+      }
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log(input)
         dispatch(createDog(input))
         alert('DOGGO CREATED')
     }
-    
     const handleSelect = (e) => {
         setInput({
             ...input,
@@ -47,109 +60,87 @@ export default function PostDog() {
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div className='inputsCointainer'>
                         <div className='inputContainer'>
-                            <label className='inputName' htmlFor="Name...">Name: </label>
+                            <label className='inputName' htmlFor="name">Name: </label>
                             <input
                             className='inputForm'
                             type='text'
                             placeholder="Dog's name..."
-                            onChange= {(e) => {
-                                const res = e.target.value;
-                                setInput({
-                                ...input,
-                                name: res,
-                                })
-                            }}
-                            />
+                            name='name'
+                            id='name'
+                            value={input.name}
+                            onChange= {handleInput}/>
+                            {errors.name && (<p>{errors.name}</p>)}
                         </div>
                         <div className='inputContainer'>
-                            <label className='inputName' htmlFor="Weight min...">Minimum weight: </label>
+                            <label className='inputName' htmlFor="weight_min">Minimum weight: </label>
                             <input
                             className='inputForm'
                             type='number'
                             placeholder="Dog's minumum weight..."
+                            name='weight_min'
+                            id='weight_min'
                             value={input.weight_min}
-                            onChange= {(e) => {
-                                const res = e.target.value;
-                                res >= 0 && res <= 100 ? 
-                                setInput({
-                                ...input,
-                                weight_min: res,
-                                }) :
-                                alert('Write weight between 0 - 100')
-                            }}
-                            />
+                            onChange= {handleInput}/>
+                            {errors.weight_min && (<p>{errors.weight_min}</p>)}
                         </div>
                         <div className='inputContainer'>
-                            <label  className='inputName' htmlFor="Weight max...">Maximum weight: </label>
+                            <label  className='inputName' htmlFor="weight_max">Maximum weight: </label>
                             <input
                             className='inputForm'
                             type='number'
                             placeholder="Dog's maximum weight..."
+                            name='weight_max'
+                            id='weight_max'
                             value={input.weight_max}
-                            onChange= {(e) => {
-                                const res = e.target.value;
-                                res >= 0 && res <= 100 ?
-                                setInput({
-                                ...input,
-                                weight_max: res,
-                                }) :
-                                alert('Write weight between 0 - 100')
-                            }}
-                            />
+                            onChange= {handleInput}/>
+                            {errors.weight_max && (<p>{errors.weight_max}</p>)}
                         </div>
                         <div className='inputContainer'>
-                            <label className='inputName' htmlFor="Height min...">Minimum height: </label>
+                            <label className='inputName' htmlFor="height_min">Minimum height: </label>
                             <input
                             className='inputForm'
                             type='number'
                             placeholder="Dog's minimum height..."
                             value={input.height_min}
-                            onChange= {(e) => {
-                                const res = e.target.value;
-                                res >= 0 && res <= 100 ?
-                                setInput({
-                                ...input,
-                                height_min: res,
-                                }) :
-                                alert('Write height between 0 - 100')
-                            }}
-                            />
+                            name='height_min'
+                            id='height_min'
+                            onChange= {handleInput}/>
+                            {errors.height_min && (<p>{errors.height_min}</p>)}
                         </div>
                         <div className='inputContainer'>
-                            <label className='inputName' htmlFor="Height max...">Maximum height: </label>
+                            <label className='inputName' htmlFor="height_max">Maximum height: </label>
                             <input
                             className='inputForm'
                             type='number'
                             placeholder="Dog's Maximum height..."
                             value={input.height_max}
-                            onChange= {(e) => {
-                                const res = e.target.value;
-                                res >= 0 && res <= 100 ?
-                                setInput({
-                                ...input,
-                                height_max: res,
-                                }) :
-                                alert('Write height between 0 - 100')
-                            }}
-                            />
+                            name='height_max'
+                            id='height_max'
+                            onChange= {handleInput}/>
+                            {errors.height_max && (<p>{errors.height_max}</p>)}
                         </div>
                         <div className='inputContainer'>
-                            <label className='inputName' htmlFor="Life span...">Life span: </label>
+                            <label className='inputName' htmlFor="life_span">Life span: </label>
                             <input
                             className='inputForm'
                             type='number'
                             placeholder="Dog's life span :(..."
                             value={input.life_span}
-                            onChange= {(e) => {
-                                const res = e.target.value;
-                                res >= 0 && res <= 20 ?
-                                setInput({
-                                ...input,
-                                life_span: res,
-                                }) :
-                                alert('Dogs cannot live longer than 20 years, please write a number between 0 - 20')
-                            }}
+                            name='life_span'
+                            id='life_span'
+                            onChange= { handleInput
+                                // (e) => {
+                            //     const res = e.target.value;
+                            //     res >= 0 && res <= 20 ?
+                            //     setInput({
+                            //     ...input,
+                            //     life_span: res,
+                            //     }) :
+                            //     alert('Dogs cannot live longer than 20 years, please write a number between 0 - 20')
+                            // }
+                        }
                             />
+                             {errors.life_span && (<p>{errors.life_span}</p>)}
                         </div>
                         <div className='inputContainer'>
                             <label className='inputName' htmlFor="Image...">Image: </label>
@@ -171,7 +162,7 @@ export default function PostDog() {
                     </div>
                     
                     <div>
-                        <select onChange={(e) => handleSelect(e)}>
+                        <select className='selectForm' onChange={(e) => handleSelect(e)}>
                             <option selected="false" disabled >TEMPERAMENTS</option>
                             {
                                 temperament.map((t, index) => (    
@@ -184,15 +175,57 @@ export default function PostDog() {
                             }
                         </select> 
                     </div>
-                    <ul className='laUL'>
+                    {/* <ul className='laUL'>
                        {
                         input.temperament.map((t) => {
                             <li className='liLI'>{t}</li>
                         })
                        } 
-                    </ul>
-                    <input type="submit" className='boton' value='ADD DOG'/>
+                    </ul> */}
+                    <input type="submit" disabled={validate} className='boton' value='ADD DOG'/>
                 </form>    
         </div>   
     )
 } 
+
+export function validate(input, disabled) {
+    let errors = {}
+
+    if(!input.name) {
+      errors.name = 'Username is required'
+    } else if (parseInt(input.name)) {
+      errors.name = 'Username is invalid, write a text'
+    }
+    if(!input.weight_min) {
+      errors.weight_min = 'Minimum weight is required'
+    } else if (input.weight_min <= 0 || input.weight_min >= 100) {
+        errors.weight_min = 'Write a number beetwen 0 - 100'
+        alert('Write a number beetwen 0 - 100')
+    }
+    if(!input.weight_max) {
+        errors.weight_max = 'Maximum weight is required'
+      } else if (input.weight_max <= 0 || input.weight_max >= 100) {
+          errors.weight_max = 'Write a number beetwen 0 - 100'
+          alert('Write a number beetwen 0 - 100')
+      }
+      if(!input.height_min) {
+        errors.height_min = 'Minimum height is required'
+      } else if (input.height_min <= 0 || input.height_min >= 100) {
+          errors.height_min = 'Write a number beetwen 0 - 100'
+          alert('Write a number beetwen 0 - 100')
+      }
+      if(!input.height_max) {
+        errors.height_max = 'Minimum height is required'
+      } else if (input.height_max <= 0 || input.height_max >= 100) {
+          errors.height_max = 'Write a number beetwen 0 - 100'
+          alert('Write a number beetwen 0 - 100')
+      }
+      if(!input.life_span) {
+        errors.life_span = 'Life span is required'
+      } else if (input.life_span <= 0 || input.life_span >= 20) {
+          errors.life_span = 'Write a number beetwen 0 - 20'
+          alert('Write a number beetwen 0 - 20')
+      }
+      if(errors.length < 0) {disabled = false} else {disabled = true} 
+  return errors;
+}

@@ -58,7 +58,7 @@
     border: 3px solid rebeccapurple;
     background-color: white;
 } 
-select{
+.selectForm{
     background-color: rgb(253, 197, 132);
     font-family: inherit;
     border-radius: 3rem;
