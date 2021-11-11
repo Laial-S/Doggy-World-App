@@ -36,17 +36,18 @@ export default function PostDog() {
             ...input,
             temperament: [...input.temperament, e.target.value]
         })
+        console.log(input)
     }
 
     return (
         <div className='formCointeiner'>
             <Link to='/home'>
-                <button onClick={(e) => getDogs(e)}>HOME</button>
+                <button className = 'boton' onClick={(e) => getDogs(e)}>HOME</button>
             </Link>
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div className='inputsCointainer'>
                         <div className='inputContainer'>
-                            <label className='nameForm' htmlFor="Name...">Name: </label>
+                            <label className='inputName' htmlFor="Name...">Name: </label>
                             <input
                             className='inputForm'
                             type='text'
@@ -61,7 +62,7 @@ export default function PostDog() {
                             />
                         </div>
                         <div className='inputContainer'>
-                            <label className='inputContainer' htmlFor="Weight min...">Minimum weight: </label>
+                            <label className='inputName' htmlFor="Weight min...">Minimum weight: </label>
                             <input
                             className='inputForm'
                             type='number'
@@ -79,7 +80,7 @@ export default function PostDog() {
                             />
                         </div>
                         <div className='inputContainer'>
-                            <label  className='inputContainer' htmlFor="Weight max...">Maximum weight: </label>
+                            <label  className='inputName' htmlFor="Weight max...">Maximum weight: </label>
                             <input
                             className='inputForm'
                             type='number'
@@ -97,7 +98,7 @@ export default function PostDog() {
                             />
                         </div>
                         <div className='inputContainer'>
-                            <label className='inputContainer' htmlFor="Height min...">Minimum height: </label>
+                            <label className='inputName' htmlFor="Height min...">Minimum height: </label>
                             <input
                             className='inputForm'
                             type='number'
@@ -115,7 +116,7 @@ export default function PostDog() {
                             />
                         </div>
                         <div className='inputContainer'>
-                            <label className='inputContainer' htmlFor="Height max...">Maximum height: </label>
+                            <label className='inputName' htmlFor="Height max...">Maximum height: </label>
                             <input
                             className='inputForm'
                             type='number'
@@ -133,7 +134,7 @@ export default function PostDog() {
                             />
                         </div>
                         <div className='inputContainer'>
-                            <label className='inputContainer' htmlFor="Life span...">Life span: </label>
+                            <label className='inputName' htmlFor="Life span...">Life span: </label>
                             <input
                             className='inputForm'
                             type='number'
@@ -151,7 +152,7 @@ export default function PostDog() {
                             />
                         </div>
                         <div className='inputContainer'>
-                            <label className='inputContainer' htmlFor="Image...">Image: </label>
+                            <label className='inputName' htmlFor="Image...">Image: </label>
                             <input
                             className='inputForm'
                             type='url'
@@ -171,7 +172,7 @@ export default function PostDog() {
                     
                     <div>
                         <select onChange={(e) => handleSelect(e)}>
-                            <option>TEMPERAMENTS</option>
+                            <option selected="false" disabled >TEMPERAMENTS</option>
                             {
                                 temperament.map((t, index) => (    
                                     <option 
@@ -190,7 +191,7 @@ export default function PostDog() {
                         })
                        } 
                     </ul>
-                    <input type="submit" value='ADD DOG'/>
+                    <input type="submit" className='boton' value='ADD DOG'/>
                 </form>    
         </div>   
     )

@@ -17,7 +17,7 @@ import doggin from '../landing/doggin.jpg'
             </div>
                     <div className='contenedorBoton'>
                 <Link to= '/home'> 
-                        <button className='boton'>HOME</button>
+                        <button className='botonLanding'>HOME</button>
                 </Link>
                     </div>
         </div>
