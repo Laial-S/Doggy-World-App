@@ -94,13 +94,14 @@ export function createDog({name, image, temperament, weight_min, weight_max, hei
 }
 
 export function dogDetail(id) {
+    // console.log('LLEGA ID ACTION ' + id)
     if(id) {
        return async function(dispatch) {
-        const doggo = await axios.get(`http://localhost:3001/dogs/${id}`)
-        const data = doggo.data
-        return dispatch({type: 'DOG_DETAIL', payload: data})
-        } 
-    } else {
-        return {type: 'CLEAR_DETAIL'}
-    } 
+           try {
+               const doggo = await axios.get(`http://localhost:3001/dogs/${id}`)
+                // console.log('DOGGO DATA ' + doggo)
+                return dispatch({type: 'DOG_DETAIL', payload: doggo.data})
+           } catch (e) {console.log(e)}  
+    }
+    } else {return {type: 'CLEAR_DETAIL'}} 
 }

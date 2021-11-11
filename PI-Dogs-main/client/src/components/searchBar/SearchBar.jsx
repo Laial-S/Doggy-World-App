@@ -7,7 +7,7 @@ import '../searchBar/SearchBar.css'
     // const [breed, setBreed] = useState([]);
     const [input, setInput] = useState('')
     const allBreeds = useSelector((state) => state.dogs)
-    console.log(allBreeds)
+    // console.log(allBreeds)
     const dispatch = useDispatch();
 
     function onInputChange(e) {

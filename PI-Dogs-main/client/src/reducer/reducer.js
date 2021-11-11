@@ -110,6 +110,7 @@ const reducer = (state = initialState, action) => {
                 dogs: weightArr
             }
         case DOG_DETAIL: 
+        // console.log('REDUCER DETAIL' + JSON.stringify(action.payload));
             return {
                 ...state,
                 dogDetail : action.payload

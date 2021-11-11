@@ -1,32 +1,59 @@
 .formCointeiner {
     margin: 0;
-    padding: 0;
+    padding: 15px; 
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
+    padding-bottom: 40px;
+    width: 100%;
+    height: 100%;
+    border: 5px solid rgb(209, 125, 248);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px;
 }
 
-.formi {
+.inputsCointainer {
     display: flex;
-    height: 100vh;
-    
-    /* justify-content: center; */
-    /* align-items: center; */
-    flex-direction: column;
+    align-items: flex-start;
     flex-wrap: wrap;
-    padding:10px ;
-    background-color: burlywood;
-}
-.bodyForm {
-    max-width: 700px;
-    width: 100%;
-    background-color: rgb(42, 92, 94);
-    padding: 25px 30px;
-    border-radius: 5px;
-}
-.temperamentsForm {
-    /* position: relative; */
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     justify-content: center;
 }
+.inputContainer {
+    color: rgb(253, 173, 98);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 0 1 180px;
+    align-items: center;
+}
+.nameForm {
+    font-size: 20px;
+    margin-right: 5px;
+}
+.inputForm {
+    font-family: inherit;
+    padding: 8px;
+    width: 180px;
+    background-color: rgb(244, 255, 147);
+    border-radius: 5px;
+    margin-right: 4px;
+    border: 3px solid #185ef7;
+    outline: none;
+}
+.laUL {
+    background-color: red;
+    height: 300px;
+}
+.liLI {
+    background-color: yellow;
+    height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
