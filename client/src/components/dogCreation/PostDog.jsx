@@ -130,14 +130,14 @@ export default function PostDog() {
                             name='life_span'
                             id='life_span'
                             onChange= { handleInput
-                                // (e) => {
-                                // const res = e.target.value;
-                                // res >= 0 && res <= 20 ?
-                                // setInput({
-                                // ...input,
-                                // life_span: res,
-                                // }) :
-                                // alert('Dogs cannot live longer than 20 years, please write a number between 0 - 20')
+                            //     (e) => {
+                            //     const res = e.target.value;
+                            //     res >= 0 && res <= 20 ?
+                            //     setInput({
+                            //     ...input,
+                            //     life_span: res,
+                            //     }) :
+                            //     alert('Dogs cannot live longer than 20 years, please write a number between 0 - 20')
                             // }
                         }
                             />
@@ -191,7 +191,7 @@ export default function PostDog() {
                         })
                        } 
                     </ul> */}
-                    <input type="submit" disabled={false} className='boton' value='ADD DOG'/>
+                    <input type="submit" disabled={true} className='boton' value='ADD DOG'/>
                 </form>    
         </div>   
     )
