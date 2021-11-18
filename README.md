@@ -1,2 +1,2 @@
 # Individual Project - Dog App "Doggy World"
-![landing](file:///D:/Laial/A.%20HENRY/fotos%20PI/Landing.png)
+![landing](D:\Laial\A. HENRY\fotos PI\Landing.png)
