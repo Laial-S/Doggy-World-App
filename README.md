@@ -18,7 +18,6 @@ The Doggy World App was developed during the Henry Bootcamp. The idea was to cre
 - Redux
 - Express
 - Sequelize - Postgres
-- Express.js
 - CSS with no external libraries
 ![Home](https://user-images.githubusercontent.com/86334859/142331682-ec991310-4269-4d75-bf48-f4c64a3ff87f.png)
 ![Detail](https://user-images.githubusercontent.com/86334859/142331713-f93f56bc-2e19-48c6-ab63-b2d2512bc51d.png)
