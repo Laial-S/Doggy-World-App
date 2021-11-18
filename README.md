@@ -27,7 +27,7 @@ The Doggy World App was developed during the Henry Bootcamp. The idea was to cre
 ### Installation and Setup Instructions
 1. Installation: npm install on both the api and the client folders
 
-2. Remember to create and setup the file api/.env to run the Back-End correctly. You will need your Postgres credentials, create a new DB on your computer and also get an ApiKey from (The Dog Api)[https://thedogapi.com/].
+2. Remember to create and setup the file api/.env to run the Back-End correctly. You will need your Postgres credentials, create a new DB on your computer and also get an ApiKey from *(The Dog Api)[https://thedogapi.com/]*.
 
 3. In both the api and the client directory, you can run: npm start.
 
